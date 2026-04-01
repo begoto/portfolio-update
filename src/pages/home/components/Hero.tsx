@@ -88,8 +88,8 @@ export default function Hero() {
         {/* Stats Row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-10 border-t border-[#1e1e1e]">
           {[
-            { value: "3+", label: "Années d'expérience" },
-            { value: "20+", label: "Projets réalisés" },
+            { value: "1+", label: "Années d'expérience" },
+            { value: "12+", label: "Projets réalisés" },
             { value: "10+", label: "Technologies maîtrisées" },
             { value: "100%", label: "Satisfaction client" },
           ].map((stat) => (
