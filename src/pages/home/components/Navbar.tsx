@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-
+import { Icon } from "@/components/Icon";
+import { useEffect, useState } from "react";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Compétences", href: "#competences" },
@@ -38,11 +38,6 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16">
         {/* Logo */}
         <a href="#home" onClick={() => handleNavClick("Home", "#home")} className="flex items-center gap-2 cursor-pointer">
-          <img
-            src=""
-            alt=""
-            className="h-9 w-auto object-contain"
-          />
           <span className="text-white font-bold text-xl tracking-wide">Royal_Tech</span>
         </a>
 
@@ -68,8 +63,10 @@ export default function Navbar() {
         <button
           className="md:hidden text-white w-8 h-8 flex items-center justify-center cursor-pointer"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Ouvrir le menu de navigation"
+          aria-expanded={menuOpen}
         >
-          <i className={`${menuOpen ? "ri-close-line" : "ri-menu-line"} text-2xl`}></i>
+          <Icon name={menuOpen ? "close" : "menu"} className="text-2xl" />
         </button>
       </div>
 

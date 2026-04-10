@@ -1,3 +1,6 @@
+
+import { Icon } from "@/components/Icon";
+
 export default function About() {
   return (
     <section id="about" className="bg-[#0a0a0a] py-24">
@@ -13,9 +16,13 @@ export default function About() {
                 src="/assets/images/about.jpg"
                 alt="À propos de moi - Royal_Tech"
                 className="w-full h-full object-cover object-top rounded-xl relative z-10"
+                width={320}
+                height={380}
+                loading="lazy"
+                decoding="async"
               />
               {/* Experience badge */}
-              <div className="absolute -bottom-5 -right-5 z-20 bg-[#E85D04] text-white rounded-xl p-4 text-center">
+              <div className="absolute -bottom-5 -right-5 z-20 bg-[#C54B03] text-white rounded-xl p-4 text-center">
                 <p className="text-2xl font-extrabold leading-none">1+</p>
                 <p className="text-xs mt-0.5 whitespace-nowrap">Ans d&apos;exp.</p>
               </div>
@@ -40,15 +47,15 @@ export default function About() {
 
             {/* Key Points */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              {[
-                { icon: "ri-map-pin-line", label: "Localisation", value: "Yaoundé" },
-                { icon: "ri-mail-line", label: "Email", value: "begotostofil@gmail.com" },
-                { icon: "ri-briefcase-line", label: "Statut", value: "Disponible en freelance" },
-                { icon: "ri-graduation-cap-line", label: "Niveau", value: "Développeur Junior/Mid" },
-              ].map((item) => (
+              {([
+                { icon: "mapPin", label: "Localisation", value: "Yaoundé" },
+                { icon: "mail", label: "Email", value: "begotostofil@gmail.com" },
+                { icon: "briefcase", label: "Statut", value: "Disponible en freelance" },
+                { icon: "graduation", label: "Niveau", value: "Développeur Junior/Mid" },
+              ] as const).map((item) => (
                 <div key={item.label} className="flex items-start gap-3">
                   <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#E85D04]/10 text-[#E85D04] flex-shrink-0 mt-0.5">
-                    <i className={`${item.icon} text-sm`}></i>
+                    <Icon name={item.icon} className="text-sm" />
                   </div>
                   <div>
                     <p className="text-gray-500 text-xs">{item.label}</p>
@@ -80,7 +87,7 @@ export default function About() {
                 download
                 className="flex items-center gap-2 bg-[#E85D04] hover:bg-[#c94d03] text-white font-semibold px-6 py-3 rounded-md transition-all duration-200 cursor-pointer whitespace-nowrap"
               >
-                <i className="ri-download-line"></i>
+                <Icon name="download" className="text-base" />
                 Télécharger CV
               </a>
               <button
@@ -90,7 +97,7 @@ export default function About() {
                 }}
                 className="flex items-center gap-2 border border-[#E85D04] text-[#E85D04] hover:bg-[#E85D04] hover:text-white font-semibold px-6 py-3 rounded-md transition-all duration-200 cursor-pointer whitespace-nowrap"
               >
-                <i className="ri-message-3-line"></i>
+                <Icon name="message" className="text-base" />
                 Me contacter
               </button>
             </div>

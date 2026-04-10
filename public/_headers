@@ -1,0 +1,41 @@
+/* Security Headers for Netlify */
+
+# CSP - Content Security Policy
+# Allows: local resources, formsubmit.co
+/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co
+
+# COOP - Cross-Origin-Opener-Policy
+  Cross-Origin-Opener-Policy: same-origin
+
+# COEP - Cross-Origin-Embedder-Policy
+  Cross-Origin-Embedder-Policy: require-corp
+
+# X-Frame-Options - Clickjacking protection
+  X-Frame-Options: DENY
+
+# X-Content-Type-Options - MIME type sniffing protection
+  X-Content-Type-Options: nosniff
+
+# X-XSS-Protection - Legacy XSS protection (for older browsers)
+  X-XSS-Protection: 1; mode=block
+
+# Referrer-Policy - Control referrer information
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Permissions-Policy - Feature control
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+
+# Cache Control - Static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache Control - HTML (no cache)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Cache Control - JS/CSS
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+/css/*
+  Cache-Control: public, max-age=31536000, immutable

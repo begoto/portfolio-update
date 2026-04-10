@@ -1,3 +1,4 @@
+import { Icon } from "@/components/Icon";
 import { useState } from "react";
 
 const categories = ["Tous", "React/Next.js", "UI Design", "Full Stack", "Landing Page"];
@@ -81,7 +82,7 @@ export default function Portfolio() {
             Mes Réalisations
           </span>
           <h2 className="text-4xl font-extrabold text-white mt-3">Portfolio</h2>
-          <p className="text-gray-500 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="text-gray-400 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
             Une sélection de projets qui illustrent mon expertise en développement frontend et en design d&apos;interfaces.
           </p>
         </div>
@@ -112,7 +113,7 @@ export default function Portfolio() {
             >
               {/* Featured Badge */}
               {project.featured && (
-                <span className="absolute top-3 right-3 z-20 bg-[#E85D04] text-white text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap">
+                <span className="absolute top-3 right-3 z-20 bg-[#C54B03] text-white text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap">
                   Featured
                 </span>
               )}
@@ -123,6 +124,10 @@ export default function Portfolio() {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    width={400}
+                    height={192}
+                    loading="lazy"
+                    decoding="async"
                 />
               </div>
 
@@ -135,14 +140,14 @@ export default function Portfolio() {
                   aria-label="GitHub"
                   className="w-10 h-10 flex items-center justify-center rounded-full bg-[#E85D04] text-white hover:bg-[#c94d03] transition-colors cursor-pointer"
                 >
-                  <i className="ri-github-fill text-lg"></i>
+                  <Icon name="github" className="text-lg" />
                 </a>
                 <a
                   href={project.live}
                   aria-label="Voir le projet"
                   className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-black hover:bg-gray-200 transition-colors cursor-pointer"
                 >
-                  <i className="ri-external-link-line text-lg"></i>
+                  <Icon name="externalLink" className="text-lg" />
                 </a>
               </div>
 
@@ -172,7 +177,7 @@ export default function Portfolio() {
             rel="nofollow noopener noreferrer"
             className="inline-flex items-center gap-2 border border-[#E85D04] text-[#E85D04] hover:bg-[#E85D04] hover:text-white font-semibold px-8 py-3 rounded-md transition-all duration-200 cursor-pointer whitespace-nowrap"
           >
-            <i className="ri-github-fill"></i>
+            <Icon name="github" className="text-base" />
             Voir plus sur GitHub
           </a>
         </div>

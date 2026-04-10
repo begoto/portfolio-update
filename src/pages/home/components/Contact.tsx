@@ -1,3 +1,4 @@
+import { Icon } from "@/components/Icon";
 import { useState } from "react";
 
 export default function Contact() {
@@ -12,7 +13,7 @@ export default function Contact() {
             Travaillons ensemble
           </span>
           <h2 className="text-4xl font-extrabold text-white mt-3">Contactez-moi</h2>
-          <p className="text-gray-500 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="text-gray-400 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
             Un projet en tête ? Une collaboration à envisager ? N&apos;hésitez pas à me contacter, je réponds rapidement.
           </p>
         </div>
@@ -20,54 +21,54 @@ export default function Contact() {
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Contact Info */}
           <div className="lg:w-2/5 space-y-6">
-            {[
+            {([
               {
-                icon: "ri-mail-send-line",
+                icon: "mail",
                 title: "Email",
                 value: "begotostofil@gmail.com",
                 sub: "Réponse sous 24h",
               },
               {
-                icon: "ri-whatsapp-line",
+                icon: "whatsapp",
                 title: "WhatsApp",
                 value: "+237 688 084 974",
                 sub: "Disponible en semaine",
               },
               {
-                icon: "ri-map-pin-2-line",
+                icon: "mapPin",
                 title: "Localisation",
                 value: "Yaoundé, Cameroun",
                 sub: "Disponible en remote",
               },
               {
-                icon: "ri-time-line",
+                icon: "briefcase",
                 title: "Disponibilité",
                 value: "Freelance / CDI",
                 sub: "Ouvert aux opportunités",
               },
-            ].map((item) => (
+            ] as const).map((item) => (
               <div
                 key={item.title}
                 className="flex items-start gap-4 bg-[#111111] border border-[#1e1e1e] rounded-xl p-5 hover:border-[#E85D04]/40 transition-colors duration-200"
               >
                 <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#E85D04]/10 text-[#E85D04] flex-shrink-0">
-                  <i className={`${item.icon} text-xl`}></i>
+                  <Icon name={item.icon} className="text-xl" />
                 </div>
                 <div>
-                  <p className="text-gray-500 text-xs">{item.title}</p>
+                  <p className="text-gray-400 text-xs">{item.title}</p>
                   <p className="text-white text-sm font-semibold mt-0.5">{item.value}</p>
-                  <p className="text-gray-600 text-xs mt-0.5">{item.sub}</p>
+                  <p className="text-gray-400 text-xs mt-0.5">{item.sub}</p>
                 </div>
               </div>
             ))}
 
             {/* Social Links */}
             <div className="flex gap-3 pt-2">
-              {[
-                { icon: "ri-github-fill", href: "https://github.com/begoto24", label: "GitHub" },
-                { icon: "ri-linkedin-box-fill", href: "https://linkedin.com/feed/", label: "LinkedIn" },
-                { icon: "ri-gitlab-fill", href: "https://gitlab.com/begoto24", label: "GitLab" },
-              ].map((s) => (
+              {([
+                { icon: "github", href: "https://github.com/begoto24", label: "GitHub" },
+                { icon: "linkedin", href: "https://linkedin.com/feed/", label: "LinkedIn" },
+                { icon: "gitlab", href: "https://gitlab.com/begoto24", label: "GitLab" },
+              ] as const).map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
@@ -76,7 +77,7 @@ export default function Contact() {
                   aria-label={s.label}
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-[#2a2a2a] text-gray-400 hover:border-[#E85D04] hover:text-[#E85D04] transition-all duration-200 cursor-pointer"
                 >
-                  <i className={`${s.icon} text-xl`}></i>
+                  <Icon name={s.icon} className="text-xl" />
                 </a>
               ))}
             </div>
@@ -134,12 +135,14 @@ export default function Contact() {
               </div>
 
               <div className="mb-5">
-                <label className="block text-[#E85D04] text-xs font-semibold mb-1.5 uppercase tracking-wide">
+                <label htmlFor="subject" className="block text-[#E85D04] text-xs font-semibold mb-1.5 uppercase tracking-wide">
                   Sujet
                 </label>
                 <select
+                  id="subject"
                   name="subject"
                   required
+                  aria-label="Sujet du message"
                   className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-[#E85D04] transition-colors duration-200 cursor-pointer"
                 >
                   <option value="">Choisir un sujet</option>
@@ -165,7 +168,7 @@ export default function Contact() {
                   className="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-md px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#E85D04] transition-colors duration-200 resize-none"
                 />
                 <div className="flex justify-end mt-1">
-                  <span className={`text-xs ${charCount > 480 ? "text-[#E85D04]" : "text-gray-600"}`}>
+                  <span className={`text-xs ${charCount > 480 ? "text-[#E85D04]" : "text-gray-400"}`}>
                     {charCount}/500
                   </span>
                 </div>
@@ -175,7 +178,7 @@ export default function Contact() {
                 type="submit"
                 className="w-full bg-[#E85D04] hover:bg-[#c94d03] text-white font-bold py-3.5 rounded-md transition-all duration-200 cursor-pointer whitespace-nowrap flex items-center justify-center gap-2"
               >
-                <i className="ri-send-plane-fill"></i>
+                <Icon name="send" className="text-base" />
                 Envoyer le message
               </button>
             </form>

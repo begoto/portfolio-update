@@ -1,3 +1,6 @@
+
+import { Icon } from "@/components/Icon";
+
 export default function Hero() {
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -32,25 +35,25 @@ export default function Hero() {
                 onClick={() => scrollTo("#contact")}
                 className="flex items-center gap-2 bg-[#E85D04] hover:bg-[#c94d03] text-white font-semibold px-6 py-3 rounded-md transition-all duration-200 cursor-pointer whitespace-nowrap"
               >
-                <i className="ri-whatsapp-line text-lg"></i>
+                <Icon name="whatsapp" className="text-lg" />
                 Contactez moi
               </button>
               <button
                 onClick={() => scrollTo("#competences")}
                 className="flex items-center gap-2 border border-[#E85D04] text-[#E85D04] hover:bg-[#E85D04] hover:text-white font-semibold px-6 py-3 rounded-md transition-all duration-200 cursor-pointer whitespace-nowrap"
               >
-                <i className="ri-arrow-down-line text-lg"></i>
+                <Icon name="arrowDown" className="text-lg" />
                 Voir mes compétences
               </button>
             </div>
 
             {/* Social Icons */}
             <div className="flex gap-4">
-              {[
-                { icon:                    "ri-github-fill", href: "https://github.com/begoto24", label: "GitHub" },
-                { icon: "ri-linkedin-box-fill", href: "https://linkedin.com/feed/", label: "LinkedIn" },
-                { icon: "ri-gitlab-fill", href: "https://gitlab.com/begoto24", label: "GitLab" },
-              ].map((social) => (
+              {([
+                { icon: "github", href: "https://github.com/begoto24", label: "GitHub" },
+                { icon: "linkedin", href: "https://linkedin.com/feed/", label: "LinkedIn" },
+                { icon: "gitlab", href: "https://gitlab.com/begoto24", label: "GitLab" },
+              ] as const).map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
@@ -59,7 +62,7 @@ export default function Hero() {
                   aria-label={social.label}
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-[#2a2a2a] text-gray-400 hover:border-[#E85D04] hover:text-[#E85D04] transition-all duration-200 cursor-pointer"
                 >
-                  <i className={`${social.icon} text-xl`}></i>
+                  <Icon name={social.icon} className="text-xl" />
                 </a>
               ))}
             </div>
@@ -75,10 +78,14 @@ export default function Hero() {
                   src="/assets/images/profil.jpg"
                   alt="Royal_Tech - Developer Frontend"
                   className="w-full h-full object-cover object-top"
+                  width={384}
+                  height={384}
+                  fetchPriority="high"
+                  loading="eager"
                 />
               </div>
               {/* Badge */}
-              <div className="absolute -bottom-2 -right-2 bg-[#E85D04] text-white text-xs font-bold px-3 py-1.5 rounded-full z-20 whitespace-nowrap">
+              <div className="absolute -bottom-2 -right-2 bg-[#C54B03] text-white text-xs font-bold px-3 py-1.5 rounded-full z-20 whitespace-nowrap">
                 &lt;Dev /&gt;
               </div>
             </div>

@@ -1,11 +1,13 @@
-import Navbar from "@/pages/home/components/Navbar";
 import Hero from "@/pages/home/components/Hero";
-import Competences from "@/pages/home/components/Competences";
-import Services from "@/pages/home/components/Services";
-import Portfolio from "@/pages/home/components/Portfolio";
-import About from "@/pages/home/components/About";
-import Contact from "@/pages/home/components/Contact";
-import Footer from "@/pages/home/components/Footer";
+import Navbar from "@/pages/home/components/Navbar";
+import { Suspense, lazy } from "react";
+
+const About = lazy(() => import("@/pages/home/components/About"));
+const Competences = lazy(() => import("@/pages/home/components/Competences"));
+const Contact = lazy(() => import("@/pages/home/components/Contact"));
+const Footer = lazy(() => import("@/pages/home/components/Footer"));
+const Portfolio = lazy(() => import("@/pages/home/components/Portfolio"));
+const Services = lazy(() => import("@/pages/home/components/Services"));
 
 export default function Home() {
   return (
@@ -13,13 +15,17 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Competences />
-        <Services />
-        <Portfolio />
-        <About />
-        <Contact />
+        <Suspense fallback={<div className="min-h-[320px] bg-[#0a0a0a] animate-pulse" />}>
+          <Competences />
+          <Services />
+          <Portfolio />
+          <About />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={<div className="h-24 bg-[#0a0a0a]" />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

@@ -1,47 +1,49 @@
+import { Icon } from "@/components/Icon";
 import { useEffect, useRef, useState } from "react";
 
 const skillCategories = [
   {
     category: "Frontend Development",
-    icon: "ri-code-s-slash-line",
+    icon: "code",
     skills: [
-      { name: "React.js", level: 92, icon: "ri-reactjs-line" },
-      { name: "Next.js", level: 88, icon: "ri-layout-line" },
-      { name: "TypeScript", level: 85, icon: "ri-file-code-line" },
-      { name: "JavaScript", level: 90, icon: "ri-javascript-line" },
-    ],
+      { name: "React.js", level: 92, icon: "react" },
+      { name: "Next.js", level: 88, icon: "layout" },
+      { name: "TypeScript", level: 85, icon: "fileCode" },
+      { name: "JavaScript", level: 90, icon: "javascript" },
+    ] as const,
   },
   {
     category: "Styling & UI",
-    icon: "ri-palette-line",
+    icon: "brush",
     skills: [
-      { name: "TailwindCSS", level: 95, icon: "ri-brush-line" },
-      { name: "Bootstrap", level: 85, icon: "ri-layout-masonry-line" },
-      { name: "CSS / HTML", level: 95, icon: "ri-html5-line" },
-      { name: "Ant Design", level: 80, icon: "ri-apps-line" },
+      { name: "TailwindCSS", level: 95, icon: "brush" },
+      { name: "Bootstrap", level: 85, icon: "layout" },
+      { name: "CSS / HTML", level: 95, icon: "html5" },
+      { name: "Ant Design", level: 80, icon: "apps" },
     ],
   },
   {
     category: "UI Libraries & Design",
-    icon: "ri-pen-nib-line",
+    icon: "brush",
     skills: [
-      { name: "Shadcn/UI", level: 82, icon: "ri-stack-line" },
-      { name: "DaisyUI", level: 78, icon: "ri-flower-line" },
-      { name: "Figma", level: 85, icon: "ri-pencil-ruler-2-line" },
-      { name: "Canva", level: 88, icon: "ri-image-edit-line" },
-    ],
+      { name: "Shadcn/UI", level: 82, icon: "layers" },
+      { name: "DaisyUI", level: 78, icon: "brush" },
+      { name: "Figma", level: 85, icon: "paintbrush" },
+      { name: "Canva", level: 88, icon: "image" },
+    ] as const,
   },
   {
     category: "Outils & Versionnage",
-    icon: "ri-git-branch-line",
+    icon: "gitBranch",
     skills: [
-      { name: "Git", level: 90, icon: "ri-git-commit-line" },
-      { name: "GitHub / GitLab", level: 88, icon: "ri-github-line" },
-      { name: "Clerk (Auth)", level: 80, icon: "ri-shield-user-line" },
-      { name: "IA Tools", level: 85, icon: "ri-robot-line" },
-    ],
+      { name: "Git", level: 90, icon: "gitBranch" },
+      { name: "GitHub / GitLab", level: 88, icon: "github" },
+      { name: "Clerk (Auth)", level: 80, icon: "shield" },
+      { name: "IA Tools", level: 85, icon: "robot" },
+    ] as const,
   },
-];
+] as const;
+
 
 function SkillBar({ level, animated }: { level: number; animated: boolean }) {
   return (
@@ -83,7 +85,7 @@ export default function Competences() {
           <h2 className="text-4xl font-extrabold text-white mt-3">
             Stack Technique
           </h2>
-          <p className="text-gray-500 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="text-gray-400 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
             Des technologies frontend modernes aux outils de design, voici mon arsenal pour créer des interfaces performantes et esthétiques.
           </p>
         </div>
@@ -97,7 +99,7 @@ export default function Competences() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#E85D04]/10 text-[#E85D04]">
-                  <i className={`${cat.icon} text-xl`}></i>
+                  <Icon name={cat.icon} className="text-xl" />
                 </div>
                 <h3 className="text-white font-semibold text-base">{cat.category}</h3>
               </div>
@@ -107,7 +109,7 @@ export default function Competences() {
                   <div key={skill.name}>
                     <div className="flex items-center justify-between mb-1">
                       <div className="flex items-center gap-2">
-                        <i className={`${skill.icon} text-[#E85D04] text-sm`}></i>
+                        <Icon name={skill.icon} className="text-[#E85D04] text-sm" />
                         <span className="text-gray-300 text-sm font-medium">{skill.name}</span>
                       </div>
                       <span className="text-[#E85D04] text-xs font-bold">{skill.level}%</span>

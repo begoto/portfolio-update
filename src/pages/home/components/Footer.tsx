@@ -1,3 +1,5 @@
+import { Icon } from "@/components/Icon";
+
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Compétences", href: "#competences" },
@@ -8,10 +10,10 @@ const navLinks = [
 ];
 
 const socials = [
-  { icon: "ri-github-fill", href: "https://github.com/begoto24", label: "GitHub" },
-  { icon: "ri-linkedin-box-fill", href: "https://linkedin.com/feed/", label: "LinkedIn" },
-  { icon: "ri-gitlab-fill", href: "https://gitlab.com/begoto24", label: "GitLab" },
-];
+  { icon: "github", href: "https://github.com/begoto24", label: "GitHub" },
+  { icon: "linkedin", href: "https://linkedin.com/feed/", label: "LinkedIn" },
+  { icon: "gitlab", href: "https://gitlab.com/begoto24", label: "GitLab" },
+] as const;
 
 export default function Footer() {
   const scrollTo = (href: string) => {
@@ -31,7 +33,7 @@ export default function Footer() {
               />
               <span className="text-white font-bold text-lg">Royal_Tech</span>
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Développeur Frontend passionné, je crée des interfaces web modernes et performantes. Chaque projet est une nouvelle aventure créative.
             </p>
             <div className="flex gap-3 mt-5">
@@ -44,7 +46,7 @@ export default function Footer() {
                   aria-label={s.label}
                   className="w-9 h-9 flex items-center justify-center rounded-full bg-[#1e1e1e] text-gray-400 hover:bg-[#E85D04] hover:text-white transition-all duration-200 cursor-pointer"
                 >
-                  <i className={`${s.icon} text-base`}></i>
+                  <Icon name={s.icon} className="text-base" />
                 </a>
               ))}
             </div>
@@ -52,17 +54,17 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-5">
+            <h3 className="text-white font-semibold text-sm mb-5">
               <a id="footer-navigation">Navigation</a>
-            </h4>
+            </h3>
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <button
                     onClick={() => scrollTo(link.href)}
-                    className="text-gray-500 text-sm hover:text-[#E85D04] hover:translate-x-1 transition-all duration-200 cursor-pointer whitespace-nowrap flex items-center gap-1"
+                    className="text-gray-400 text-sm hover:text-[#E85D04] hover:translate-x-1 transition-all duration-200 cursor-pointer whitespace-nowrap flex items-center gap-1"
                   >
-                    <i className="ri-arrow-right-s-line text-xs"></i>
+                    <Icon name="link" className="text-xs" />
                     {link.label}
                   </button>
                 </li>
@@ -72,9 +74,9 @@ export default function Footer() {
 
           {/* Stack */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-5">
+            <h3 className="text-white font-semibold text-sm mb-5">
               <a id="footer-stack">Mon Stack</a>
-            </h4>
+            </h3>
             <div className="flex flex-wrap gap-2">
               {[
                 "React", "Next.js", "TypeScript",
@@ -102,10 +104,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-[#1e1e1e] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-600 text-sm text-center sm:text-left">
-            © {new Date().getFullYear()} <strong className="text-gray-500">Royal_Tech</strong>. Tous droits réservés.
+          <p className="text-gray-400 text-sm text-center sm:text-left">
+            © {new Date().getFullYear()} <strong className="text-gray-400">Royal_Tech</strong>. Tous droits réservés.
           </p>
-          <p className="text-gray-700 text-xs text-center">
+          <p className="text-gray-500 text-xs text-center">
             Conçu &amp; développé avec <span className="text-[#E85D04]">♥</span> par Royal_Tech
           </p>
         </div>
